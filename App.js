@@ -10,7 +10,18 @@ export default class App extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                {/* <Text>Hello World</Text> */}
+                <Text>Player 1</Text>
+                <Subscribe to={
+                    <CounterModel />
+                }>
+                    {counterModel =>
+                        <CounterComponent
+                            value={counterModel.value}
+                            increment={counterModel.increment} />
+                    }
+                </Subscribe>
+
+                <Text> Player 2</Text>
                 <Subscribe to={
                     <CounterModel />
                 }>

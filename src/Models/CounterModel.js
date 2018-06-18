@@ -22,7 +22,7 @@ export default class CounterModel extends Govern.Component {
 
     increment = () => {
         this.setState({
-            value: this.value + 1,
+            value: this.state.value + 1,
         })
     }
 
