@@ -5,32 +5,23 @@ import { StyleSheet, Text, View } from 'react-native'
 import CounterComponent from './src/Components/CounterComponent'
 import CounterModel from './src/Models/CounterModel'
 
-
 export default class App extends React.Component {
     render() {
-        return (
+        return ( 
             <View style={styles.container}>
-                <Text>Player 1</Text>
-                <Subscribe to={
-                    <CounterModel />
-                }>
-                    {counterModel =>
-                        <CounterComponent
-                            value={counterModel.value}
-                            increment={counterModel.increment} />
-                    }
-                </Subscribe>
-
-                <Text> Player 2</Text>
-                <Subscribe to={
-                    <CounterModel />
-                }>
-                    {counterModel =>
-                        <CounterComponent
-                            value={counterModel.value}
-                            increment={counterModel.increment} />
-                    }
-                </Subscribe>
+                {Array.from({ length: 2 }, (v, i) =>
+                    <Subscribe
+                        key={i}
+                        to={<CounterModel collection={`player_${i + 1}`} />}
+                    >
+                        {counterModel =>
+                            <CounterComponent
+                                title={`Player ${i + 1}`}
+                                value={counterModel.value}
+                                increment={counterModel.increment} />
+                        }
+                    </Subscribe>
+                )}
             </View>
         )
     }

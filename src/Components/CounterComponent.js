@@ -1,13 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Button, Text, View } from 'react-native'
 
-export default class CounterComponent extends Component {
-    render() {
-        return (
-            <View>
-                <Text>{this.props.value}</Text>
-                <Button title="Clickums" onPress={this.props.increment} />
-            </View>
-        )
-    }
+const CounterComponent = (props) => {
+    console.log(props.value)
+    return (
+    <View>
+        <Text>{props.value}</Text>
+        <Button title="Clickums" onPress={props.increment} />
+    </View>
+)
 }
+
+CounterComponent.propTypes = {
+    title: PropTypes.string,
+    value: PropTypes.number,
+    increment: PropTypes.func,
+}
+
+export default CounterComponent
