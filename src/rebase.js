@@ -7,8 +7,6 @@ import {
     REACT_APP_FIREBASE_MSG_SENDER_ID
 } from 'react-native-dotenv'
 
-console.log(process.env)
-
 const app = firebase.initializeApp({
     apiKey: REACT_APP_FIREBASE_API_KEY,
     authDomain: `${REACT_APP_FIREBASE_PROJECT_ID}.firebaseapp.com`,

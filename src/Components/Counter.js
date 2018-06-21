@@ -5,7 +5,8 @@ import { Button, Text, View } from 'react-native'
 const Counter = (props) => {
     return (
         <View>
-            <Text>{props.value}</Text>
+            <Text>This week: {props.weeklyScore}</Text>
+            <Text>Today: {props.dailyScore}</Text>
             <Button title="Clickums" onPress={props.increment} />
         </View>
     )
@@ -13,7 +14,8 @@ const Counter = (props) => {
 
 Counter.propTypes = {
     title: PropTypes.string,
-    value: PropTypes.number,
+    dailyScore: PropTypes.number,
+    weeklyScore: PropTypes.number,
     increment: PropTypes.func,
 }
 

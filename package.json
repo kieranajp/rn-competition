@@ -19,6 +19,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
     "es6-symbol": "^3.1.1",
     "expo": "^27.0.1",
     "govern": "^0.10.0",
