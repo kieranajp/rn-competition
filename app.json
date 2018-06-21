@@ -1,5 +1,15 @@
-{
-  "expo": {
-    "sdkVersion": "27.0.0"
-  }
-}
+ {
+   "expo": {
+    "name": "Competition app",
+    "icon": "./logo.png",
+    "version": "1.0.0",
+    "slug": "Competition",
+    "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.kieranajp.competition"
+    },
+    "android": {
+      "package": "com.kieranajp.competition"
+    }
+   }
+ }
