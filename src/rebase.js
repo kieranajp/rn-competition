@@ -7,6 +7,10 @@ import {
     REACT_APP_FIREBASE_MSG_SENDER_ID
 } from 'react-native-dotenv'
 
+// Ignore warning that firebase spits out.
+// https://github.com/firebase/firebase-js-sdk/issues/97
+console.ignoredYellowBox = [ 'Setting a timer' ];
+
 const app = firebase.initializeApp({
     apiKey: REACT_APP_FIREBASE_API_KEY,
     authDomain: `${REACT_APP_FIREBASE_PROJECT_ID}.firebaseapp.com`,
