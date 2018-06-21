@@ -6,7 +6,8 @@ export default class CounterModel extends Govern.Component {
     constructor(props) {
         super(props)
         this.state = {
-            score: {}
+            score: {},
+            isLoading: true
         }
         
         Array.from({ length: 7 }, (v, i) => (
@@ -18,10 +19,15 @@ export default class CounterModel extends Govern.Component {
         this.ref = base.syncState(this.props.collection, {
             context: this,
             state: 'score',
+            then: () => this.setState({ isLoading: false })
         })
     }
 
     increment = () => {
+        if (this.state.isLoading) {
+            return
+        } 
+
         this.setState(state => {
             state.score[`day_${this.props.day}`] = state.score[`day_${this.props.day}`] + 1
             return state
@@ -35,6 +41,7 @@ export default class CounterModel extends Govern.Component {
         return {
             dailyScore,
             weeklyScore,
+            isLoading: this.state.isLoading,
             increment: this.increment,
         }
     }

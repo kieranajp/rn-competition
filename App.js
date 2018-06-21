@@ -28,6 +28,7 @@ export default class App extends React.Component {
                             {counterModel =>
                                 <Counter
                                     title={`Player ${i + 1}`}
+                                    isLoading={counterModel.isLoading}
                                     dailyScore={counterModel.dailyScore}
                                     weeklyScore={counterModel.weeklyScore}
                                     increment={counterModel.increment} />

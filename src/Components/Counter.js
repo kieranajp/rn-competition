@@ -7,7 +7,7 @@ const Counter = (props) => {
         <View>
             <Text>This week: {props.weeklyScore}</Text>
             <Text>Today: {props.dailyScore}</Text>
-            <Button title="Clickums" onPress={props.increment} />
+            <Button title="Clickums" disabled={props.isLoading} onPress={props.increment} />
         </View>
     )
 }
