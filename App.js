@@ -15,27 +15,25 @@ export default class App extends React.Component {
 
         return ( 
             <View style={styles.container}>
-                <View>
-                    {Array.from({ length: App.numPlayers }, (v, i) =>
-                        <Subscribe
-                            key={i}
-                            to={<CounterModel
-                                collection={`player_${i + 1}_${week}`}
-                                week={week}
-                                day={day} />
-                            }
-                        >
-                            {counterModel =>
-                                <Counter
-                                    title={`Player ${i + 1}`}
-                                    isLoading={counterModel.isLoading}
-                                    dailyScore={counterModel.dailyScore}
-                                    weeklyScore={counterModel.weeklyScore}
-                                    increment={counterModel.increment} />
-                            }
-                        </Subscribe>
-                    )}
-                </View>
+                {Array.from({ length: App.numPlayers }, (v, i) =>
+                    <Subscribe
+                        key={i}
+                        to={<CounterModel
+                            collection={`player_${i + 1}_${week}`}
+                            week={week}
+                            day={day} />
+                        }
+                    >
+                        {counterModel =>
+                            <Counter
+                                index={i + 1}
+                                isLoading={counterModel.isLoading}
+                                dailyScore={counterModel.dailyScore}
+                                weeklyScore={counterModel.weeklyScore}
+                                increment={counterModel.increment} />
+                        }
+                    </Subscribe>
+                )}
             </View>
         )
     }
@@ -44,8 +42,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
 })
