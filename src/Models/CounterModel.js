@@ -9,10 +9,6 @@ export default class CounterModel extends Govern.Component {
             score: {},
             isLoading: true
         }
-        
-        Array.from({ length: 7 }, (v, i) => (
-            this.state.score[`day_${i + 1}`] = 0
-        ))
     }
 
     componentDidMount() {
@@ -29,13 +25,19 @@ export default class CounterModel extends Govern.Component {
         } 
 
         this.setState(state => {
-            state.score[`day_${this.props.day}`] = state.score[`day_${this.props.day}`] + 1
+            const dayNum = `day_${this.props.day}`
+            if (state.score[dayNum]) {
+                state.score[dayNum] = state.score[dayNum] + 1
+                return state
+            }
+
+            state.score[dayNum] = 1
             return state
         })
     }
 
     render() {
-        const dailyScore = this.state.score[`day_${this.props.day}`]
+        const dailyScore = this.state.score[`day_${this.props.day}`] || 0
         const weeklyScore = Object.values(this.state.score).reduce((t, v) => t + v, 0)
 
         return {
