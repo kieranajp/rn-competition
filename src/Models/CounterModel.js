@@ -1,6 +1,4 @@
 import * as Govern from 'govern'
-import Rebase from 're-base'
-import base from '../rebase'
 
 export default class CounterModel extends Govern.Component {
     constructor(props) {
@@ -12,7 +10,7 @@ export default class CounterModel extends Govern.Component {
     }
 
     componentDidMount() {
-        this.ref = base.syncState(this.props.collection, {
+        this.ref = this.props.base.syncState(this.props.collection, {
             context: this,
             state: 'score',
             then: () => this.setState({ isLoading: false })

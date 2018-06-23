@@ -2,6 +2,7 @@ import React from 'react'
 import 'es6-symbol/implement'
 import { Subscribe } from 'react-govern'
 import { StyleSheet, Text, View } from 'react-native'
+import base from './src/rebase'
 import Counter from './src/Components/Counter'
 import CounterModel from './src/Models/CounterModel'
 import { getYear, getISOWeek, getISODay } from 'date-fns';
@@ -19,6 +20,7 @@ export default class App extends React.Component {
                     <Subscribe
                         key={i}
                         to={<CounterModel
+                            base={base}
                             collection={`player_${i + 1}_${week}`}
                             week={week}
                             day={day} />
