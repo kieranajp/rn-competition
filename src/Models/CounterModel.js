@@ -1,6 +1,7 @@
 import * as Govern from 'govern'
 import Rebase from 're-base'
 import base from '../rebase'
+import { Vibration } from 'react-native'
 
 export default class CounterModel extends Govern.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ export default class CounterModel extends Govern.Component {
 
         this.setState(state => {
             const dayNum = `day_${this.props.day}`
+            Vibration.vibrate(200)
             if (state.score[dayNum]) {
                 state.score[dayNum] = state.score[dayNum] + 1
                 return state
